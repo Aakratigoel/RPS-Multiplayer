@@ -1,0 +1,12 @@
+body{
+    background: url('../images/rock-paper-scissor.jpeg') no-repeat center center fixed;
+    background-size: cover;
+}
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    position: relative;
+    top: 650px;
+}
