@@ -27,23 +27,29 @@ $(document).ready(function () {
   var count = 1;
   var chat1;
   var chat2;
+  var test = "\n";
   $("#button2").on("click",function(event)
   {
+    console.log("Entered send button");
     event.preventDefault();
-    if($("#select2").val()==="Select A Result")
+    console.log($("#select2").val());
+    if($("#select2").val()==="Select A Value")
     {
-      chat1 = player1 + ":"+$("#chatInput1").val();
+      console.log("entered first condition");
+      
+      chat1 = player1 + ":"+$("#chatInput1").val()+test;
+      console.log("chat from player 1"+chat1)
       $("#chatInput1").val("");
       database.ref().push({
-        dbChatPlayer1: chat1
+      dbChatPlayer1: chat1
       });
     }
-    else if($("#select1").val()==="Select A Result")
+    else if($("#select1").val()==="Select A Value")
     {
-      chat2 = player2 + ":"+$("#chatInput1").val();
+      chat2 = player2 + ":"+$("#chatInput1").val()+test;
       $("#chatInput1").val("");
       database.ref().push({
-        dbChatPlayer2: chat2
+      dbChatPlayer2: chat2
       });
     }
     
@@ -106,7 +112,6 @@ $(document).ready(function () {
     if (choicePlayer1 !== "Select A value" && choicePlayer2 !== "Select A value") {
       tie();
       winPlayer1();
-
       winPlayer2();
       // $("#select1").removeAttr("disabled");
       // $("#select2").removeAttr("disabled");
@@ -116,11 +121,12 @@ $(document).ready(function () {
     var keys = Object.keys(snapshot.val())[0];
 
     if (keys === "dbPlayer1") {
-      
       $("#ta1").val(snapshot.val().dbPlayer1);
+      player1 = snapshot.val().dbPlayer1;
     }
     else if (keys === "dbPlayer2") {
       $("#ta2").val(snapshot.val().dbPlayer2);
+      player2 = snapshot.val().dbPlayer2;
     }
     else if (keys === "dbChoicePlayer1") {
       choicePlayer1 = snapshot.val().dbChoicePlayer1;
@@ -149,11 +155,13 @@ $(document).ready(function () {
     }
     else if (keys === "dbChatPlayer1") {
       chat1 = snapshot.val().dbChatPlayer1;
-      $("#chatTextArea1").append(chat1);
+      $("#chatTextArea1").val($("#chatTextArea1").val()+test+chat1);
+      //$("#chatTextArea1").html($("#chatTextArea1").val($("#chatTextArea1").val()+chat1));
     }
     else if (keys === "dbChatPlayer2") {
       chat2 = snapshot.val().dbChatPlayer2;
-      $("#chatTextArea2").append(chat2);
+      $("#chatTextArea1").val($("#chatTextArea1").val()+test+chat2);
+      //$("#chatTextArea1").html($("#chatTextArea1").val($("#chatTextArea1").val()+chat2));
     }
   })
 
@@ -215,9 +223,6 @@ $(document).ready(function () {
       console.log("It's a tie");
     }
   }
-
-
-
   function addingWinsPlayer1() {
     database.ref().push({
       dbWinPlayer1: winsPlayer1
