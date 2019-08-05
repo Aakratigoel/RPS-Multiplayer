@@ -13,7 +13,8 @@
 </html> -->
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,25 +22,152 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-      <div class="row">
-          <div class="col-lg-3"></div>
-          <div class="col-lg-6">
-                <!-- <form>
-                    <label>Player 1</label>
-                    <input type ="text" id = "text1">
-                    <input type="submit" value = "Submit">
-                </form> -->
-          </div>
-          <div class="col-lg-3"></div>
-      </div>
-     <h1>ROCK, PAPER, SCISSORS</h1>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="row" style="height: 40px;">
+            </div>
+            <div class="row" style="height: 40px;">
+
+            </div>
+            <div class="row" style="height: 40px;">
+                <div class="col-lg-2"> </div>
+                <div class="col-lg-8">
+                    <form>
+                        <label>
+                            <h2>Player Name</h2>
+                        </label>
+                        <input type="text" id="text1">
+                        <input id="button1" type="submit" value="Submit">
+                    </form>
+
+                </div>
+                <div class="col-lg-2"> </div>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <div class="row" style="height:140px">
+        <div class="col-lg-3">
+            <div id="player1" class="row" style="height: 50px">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-6">
+                    <label><h2>Player 1</h2></label>
+                    <input type="textarea" id="ta1">
+                    <select class="form-control" id="select1">
+                        <option>Select A Value</option>
+                        <option>Rock</option>
+                        <option>Paper</option>
+                        <option>Scissors</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6"></div>
+
+        <div class="col-lg-3"> 
+            <div id="player2" class="row" style="height: 50px">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-6">
+                    <label><h2>Player 2</h2></label>
+                    <input type="textarea" id="ta2">
+                    <select class="form-control" id="select2">
+                        <option>Select A Value</option>
+                        <option>Rock</option>
+                        <option>Paper</option>
+                        <option>Scissors</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- new  -->
+    <div class="row" style="height:140px">
+        <div class="col-lg-3">
+            <div id="result1" class="row" style="height: 50px">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-6">
+                    <label><h4>Wins: <span id="sp1"></span></h4></label><br>
+                    <label><h4>Loss: <span id="sp2"></span></h4></label>
+                </div>
+                <div class="col-lg-4">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6"></div>
+
+        <div class="col-lg-3"> 
+            <div id="result2" class="row" style="height: 50px">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-6">
+                    <label><h4>Wins: <span id="sp3"></span></h4></label><br>
+                    <label><h4>Loss: <span id="sp4"></span></h4></label>
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Chat box -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row" style="height:250px">
+        <div class="col-lg-3">
+            
+        </div>
+        <div class="col-lg-6">
+            
+        </div>
+
+        <div class="col-lg-3"> 
+            <div class="row" style="height:140px">
+                <div class="col-lg-12">
+                    <input type="textarea" id="chatTextArea1" style="height:200px;width: 200px;">
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="text" id ="chatInput1" style="width:200px;" >
+                    <button type="button" id = "button2"value="send">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- <script src=" https://firebase.google.com/docs/web/setup#config-web-app "></script> -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js"></script>
+    <script src="assets/javascript/rps.js"></script>
+</body>
+
 </html>
