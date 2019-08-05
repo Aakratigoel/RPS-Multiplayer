@@ -75,7 +75,6 @@ $(document).ready(function () {
       })
     }
   })
-
   $("#select1").on("change", function () {
     if (count % 2 !== 0) {
       choicePlayer1 = $("#select1").val();
@@ -85,6 +84,7 @@ $(document).ready(function () {
       });
       database.ref().push({
         dbChoicePlayer1: choicePlayer1
+       
       });
     }
     else {
