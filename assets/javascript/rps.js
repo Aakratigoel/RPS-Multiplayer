@@ -34,11 +34,9 @@ $(document).ready(function () {
   {
     console.log("Entered send button");
     event.preventDefault();
-    console.log($("#select2").val());
     if(yourCharacter)
     {
       console.log("entered first condition");
-      // chat1 = $("<p>").text(player1 + ":"+$("#chatInput1").val());
       chat1 = yourCharacter.name + ":" + $("#chatInput1").val();
       console.log("chat from player: ", chat1)
       $("#chatInput1").val("");
@@ -47,15 +45,6 @@ $(document).ready(function () {
         [yourCharacter.id]: chat1
       });
     }
-    // else if($("#select1").val()==="Select A Value")
-    // {
-    //   // chat2 = $("<p>").text(player2 + ":" + $("#chatInput1").val());
-    //   chat2 = player2 + ":" + $("#chatInput1").val();
-    //   $("#chatInput1").val("");
-    //   database.ref().push({
-    //     dbChatPlayer2: chat2
-    //   });
-    // }
     
   })
   $("#button1").on("click", function (event) {
@@ -72,7 +61,7 @@ $(document).ready(function () {
       database.ref().push({
         dbPlayer1: player1
       });
-
+      $("#select2").attr("disabled","disabled")
     }
     else if ($("#ta1").val() !== "") {
       player2 = $("#text1").val();
@@ -85,50 +74,48 @@ $(document).ready(function () {
       database.ref().push({
         dbPlayer2: player2,
       })
+      $("#select1").attr("disabled","disabled")
     }
   })
-  $("#select1").on("change", function () {
-    if (count % 2 !== 0) {
-      choicePlayer1 = $("#select1").val();
-      count++;
-      database.ref().push({
-        dbCount: count
-      });
-      database.ref().push({
-        dbChoicePlayer1: choicePlayer1
-       
-      });
-    }
-    else {
-      alert("It's player 2 turn");
-    }
-
-  })
-  $("#select2").on("change", function () {
-    
-    if (count % 2 === 0) {
-      choicePlayer2 = $("#select2").val();
-      count++;
-      database.ref().push({
-        dbCount: count,
-
-      });
-      database.ref().push({
-        dbChoicePlayer2: choicePlayer2
-      });
-    }
-    else {
-
-      alert("It's player 1 turn");
-    }
-    if (choicePlayer1 !== "Select A value" && choicePlayer2 !== "Select A value") {
-      tie();
-      winPlayer1();
-      winPlayer2();
-      // $("#select1").removeAttr("disabled");
-      // $("#select2").removeAttr("disabled");
-    }
-  })
+    $("#select1").on("change", function () {
+      if (count % 2 !== 0) {
+        choicePlayer1 = $("#select1").val();
+       count++;
+        database.ref().push({
+          dbCount: count
+        });
+        database.ref().push({
+          dbChoicePlayer1: choicePlayer1
+        }); 
+      }
+      else {
+        alert("It's player 2 turn");
+        $("#select1").val(choicePlayer1);
+      }
+      })
+  
+   
+    $("#select2").on("change", function () {
+      if (count % 2 === 0) {
+        choicePlayer2 = $("#select2").val();
+        count++;
+        database.ref().push({
+          dbCount: count
+        });
+        database.ref().push({
+          dbChoicePlayer2: choicePlayer2
+        });
+        if (choicePlayer1 !== "Select A value" && choicePlayer2 !== "Select A value") {
+          tie();
+          winPlayer1();
+          winPlayer2();
+        }
+      }
+      else {
+        alert("It's player 1 turn");
+        $("#select2").val(choicePlayer2);
+      }
+      })
   database.ref().on("child_added", function (snapshot) {
     var keys = Object.keys(snapshot.val())[0];
 
@@ -142,12 +129,15 @@ $(document).ready(function () {
     }
     else if (keys === "dbChoicePlayer1") {
       choicePlayer1 = snapshot.val().dbChoicePlayer1;
+      console.log(choicePlayer1);
     }
     else if (keys === "dbChoicePlayer2") {
       choicePlayer2 = snapshot.val().dbChoicePlayer2;
+      console.log(choicePlayer2);
     }
     else if (keys === "dbCount") {
       count = snapshot.val().dbCount;
+      console.log("Count in db"+count);
     }
     else if (keys === "dbWinPlayer1") {
       winsPlayer1 = snapshot.val().dbWinPlayer1;
